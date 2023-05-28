@@ -1,0 +1,286 @@
+:root {
+  /* edit these variables for customization */
+  --guild-columns:          3;
+  --guild-status-radius:    8px;
+  --guild-badge-fontsize:   12px;
+  --guild-separator-length: 70px;
+
+  /* do not edit these */
+  --guild-status-diameter: calc(var(--guild-status-radius) * 2);
+  --guild-status-padding:  calc(var(--guild-status-radius) - var(--guild-badge-fontsize) / 2);
+}
+
+* {
+  backface-visibility: hidden;
+}
+
+/**********/
+/* GUILDS */
+/**********/
+
+/* multi-column scroller */
+
+.guilds-wrapper {
+  width: calc(10px + var(--guild-columns) * 60px);
+}
+.guilds-wrapper .scroller-wrap {
+  width: calc(24px + var(--guild-columns) * 60px);
+}
+
+.guilds-wrapper .guilds {
+  padding-left: 0 !important;
+  width: calc(24px + var(--guild-columns) * 60px);
+}
+
+.guilds-wrapper .guilds .guild:not(:first-child) {
+  display: inline-block;
+}
+
+.guilds-wrapper .guilds > *:first-child,
+.guilds-wrapper .guilds > .friends-online,
+.guilds-wrapper .guilds > .btn-download-apps {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.guilds-wrapper .guilds .guild {
+  margin-left: 10px;
+}
+
+.guilds-wrapper .guilds .guilds-add:not(:nth-child(3n+5)) {
+  top: -10px;
+}
+
+/* guild separators */
+
+.guilds-wrapper .guilds > *:first-child {
+  margin-top: 20px;
+}
+.guilds-wrapper .guilds > .friends-online {
+  margin-bottom: 30px;
+}
+
+.guilds-wrapper .guild-separator,
+.guilds-wrapper .guild-separator:after,
+.guilds-wrapper .btn-download-apps:after {
+  width: var(--guild-separator-length);
+  left: 50%;
+  margin-left: calc(var(--guild-separator-length) / -2);
+  background: #2f3136;
+}
+
+.guilds-wrapper .btn-download-apps {
+  padding-top: 32px;
+}
+
+/* opacity on hover/select */
+
+.guilds-wrapper .guilds .guild:not(:first-child) .guild-inner {
+  background: none !important;
+}
+
+.guilds-wrapper .guilds .guild .avatar-small {
+  transition: opacity .2s ease;
+}
+.guilds-wrapper .guilds .guild:not(:first-child):not(.selected) .avatar-small {
+  opacity: .2;
+}
+.guilds-wrapper .guilds .guild:not(:first-child):not(.selected) .avatar-small:hover {
+  opacity: .5;
+}
+.guilds-wrapper .guilds .guild:not(:first-child):not(.selected) .avatar-small:active {
+  opacity: .7;
+}
+
+/* bubble-style status */
+
+.guilds-wrapper .guilds .guild:before,
+.guilds-wrapper .guilds .guild .badge,
+.guilds-wrapper .guilds .guild .guild-inner:after {
+  width: var(--guild-status-diameter) !important;
+  height: var(--guild-status-diameter) !important;
+  top: auto !important;
+  bottom: -6px;
+  border: 4px solid #1e2124;
+}
+
+.guilds-wrapper .guilds .guild:before,
+.guilds-wrapper .guilds .guild .badge {
+  position: absolute;
+  left: auto !important;
+  right: -6px;
+  z-index: 1;
+  pointer-events: none;
+  border-radius: 50% !important;
+}
+
+.guilds-wrapper .guilds .guild .badge {
+  height: calc(var(--guild-status-diameter) - var(--guild-status-padding)) !important;
+  padding: var(--guild-status-padding) 0 0 0;
+  font-size: var(--guild-badge-fontsize);
+  text-align: center;
+  box-shadow: none;
+}
+
+/* audio/video markers */
+
+.guilds-wrapper .guilds .guild.unread .guild-inner:after {
+  background-color: transparent;
+  border-color: transparent;
+  z-index: 2;
+  filter: drop-shadow(0 0 3px #000);
+}
+
+/* other */
+
+.guilds-wrapper .guilds .guild .guild-inner {
+  border-radius: 25px !important;
+}
+
+.guilds-wrapper .guilds .guilds-error {
+  border: none;
+  box-shadow: 0 0 0 2px #f04747 inset;
+  transition: background .1s ease;
+}
+
+/************/
+/* CHANNELS */
+/************/
+
+/* recolored names */
+
+.content-2mSKOj,
+.private-channels .channel {
+  width: 220px;
+}
+
+.contentDefaultText-2elG3R,
+.contentDefaultVoice-311dxZ {
+  color: #b9bbbe;
+}
+.contentHoveredText-2HYGIY,
+.contentHoveredVoice-3qGNKh {
+  color: #f6f6f7;
+  background: hsla(216,4%,74%,.1);
+}
+
+.contentSelectedText-3j5CXt,
+.contentSelectedVoice-gTtYM9,
+.contentSelectedVoice-gTtYM9:active {
+  background: #7289da;
+}
+.contentHoveredText-2HYGIY:active {
+  background: #36393f;
+}
+
+/*.contentSelectedText-3j5CXt:active,
+.contentSelectedVoice-gTtYM9:active {
+  background: #526ed1;
+}*/
+
+.contentSelectedText-3j5CXt svg,
+.contentSelectedVoice-gTtYM9 svg,
+.contentSelectedText-3j5CXt svg > *,
+.contentSelectedVoice-gTtYM9 svg > * {
+  fill: #fff !important;
+  opacity: .8;
+}
+
+.nameHoveredText-2FFqiz {
+  color: #fff;
+}
+
+.listDefault-3i7eWQ,
+.listCollapse-z8PceY {
+  padding-top: 6px;
+}
+
+/* muted text channel
+
+.contentMutedText-Lcl-Wj:after {
+  width: 16px;
+  height: 16px;
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDE2IDE2IiBzdHlsZT0ib3BhY2l0eTouNiI+PGxpbmUgeDE9IjEiIHgyPSIxNSIgeTE9IjEiIHkyPSIxNSIgc3Ryb2tlPSIjNzI3NjdkIiBzdHJva2Utd2lkdGg9IjEuNSIgc3R5bGU9Im9wYWNpdHk6LjY7ZmlsdGVyOmRyb3Atc2hhZG93KDAgMCA1cHggIzIwMjIyNSkiLz48L3N2Zz4=");
+  content: "";
+  position: absolute;
+  right: 200px;
+}*/
+
+/* hiding icons 
+
+.icon-3tVJnl:not(.colorLockedVoice-2VCSgk) {
+  position: relative;
+  top: 5px;
+  right: 8px;
+  transform: scale(1.5);
+}
+
+.icon-3tVJnl:not(.colorLockedVoice-2VCSgk) > *:first-child {
+  display: none;
+}*/
+
+/* channel category header */
+
+.containerDefault-1bbItS {
+  height: 24px;
+  margin: 4px auto;
+  padding-top: 4px;
+  background: linear-gradient(90deg, #282b30 85%, #2f3136);
+}
+
+/* split between text and voice channels
+
+.contentDefaultVoice-311dxZ,
+.contentHoveredVoice-3qGNKh {
+  position: relative;
+  top: 8px;
+}
+
+.scroller-NXV0-d > [class^="container"] {
+
+}
+
+.wrapper-fDmxzK, .wrapper-fDmxzK * {
+  overflow-y: visible;
+}
+
+/* channel category arrows */
+
+.containerDefault-1bbItS svg {
+  transition: transform .1s linear;
+}
+
+.containerDefault-1bbItS svg > path {
+  transform: scale(1.25, 1.25);
+  transform-origin: center;
+}
+
+/* channel notification badges */
+
+.private-channels .badge,
+.wrapper-2xO9RX {
+  box-shadow: none;
+  width: 6px;
+  text-align: center;
+  border-radius: 50%;
+}
+.contentSelectedText-3j5CXt .wrapper-2xO9RX {
+  background: #7289da !important;
+  box-shadow: 0 0 0 3px rgb(47, 49, 54);
+}
+
+.chat.empty:after {
+  content: "The channel is missing!";
+  margin-top: 40px;
+  font-size: 18px;
+  font-weight: 700;
+  color: hsla(0, 0%, 100%, .3);
+}
+
+/***********/
+/* MEMBERS */
+/***********/
+
+.channel-members .member .member-username-inner {
+  font-weight: 600;
+}
